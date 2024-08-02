@@ -1,4 +1,4 @@
-package src.main.java.com.dgmoonlabs;
+package com.dgmoonlabs.jsoup;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -9,25 +9,25 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
  * @author moondg
- * @since 2022
  * @
+ * @since 2022
  */
 
 public class JsoupUtils {
     static String url;
     static String query;
-    static HashMap<String, String> map;
+    static Map<String, String> map;
     static Document doc = null;
 
-    public JsoupUtils() {}
-
+    private JsoupUtils() {
+    }
 
 
     public static class SingleElement {
         /**
          * SingleElement는 웹사이트에서 하나의 요소만 가져올 때 사용하는 내부 클래스.
+         *
          * @param url
          * @param query
          */
@@ -47,6 +47,7 @@ public class JsoupUtils {
 
         /**
          * CSS 선택자로 선택한 요소의 텍스트를 가져온다.
+         *
          * @return
          * @throws NullPointerException
          */
@@ -56,6 +57,7 @@ public class JsoupUtils {
 
         /**
          * CSS 선택자로 선택한 요소의 속성을 가져온다.
+         *
          * @param attributeKey
          * @return
          * @throws NullPointerException
@@ -69,10 +71,11 @@ public class JsoupUtils {
     public static class MultipleElements {
         /**
          * MultipleElements는 웹사이트에서 여러 개의 요소를 한꺼번에 가져올 때 사용하는 내부 클래스.
+         *
          * @param url
          * @param map
          */
-        public MultipleElements(String url, HashMap<String, String> map) {
+        public MultipleElements(String url, Map<String, String> map) {
             JsoupUtils.url = url;
             JsoupUtils.map = map;
 
@@ -87,10 +90,11 @@ public class JsoupUtils {
 
         /**
          * CSS 선택자로 선택한 요소의 텍스트들을 맵으로 가져온다.
+         *
          * @return
          */
-        public HashMap<String, String> getTextMap() {
-            HashMap<String, String> newMap = new HashMap<String, String>();
+        public Map<String, String> getTextMap() {
+            HashMap<String, String> newMap = new HashMap<>();
 
             for (Map.Entry<String, String> entry : map.entrySet()) {
                 String key = entry.getKey();
@@ -107,11 +111,12 @@ public class JsoupUtils {
 
         /**
          * CSS 선택자로 선택한 요소의 속성값들을 맵으로 가져온다.
+         *
          * @param attributeKey
          * @return
          */
-        public HashMap<String, String> getAttrMap(String attributeKey) {
-            HashMap<String, String> newMap = new HashMap<String, String>();
+        public Map<String, String> getAttrMap(String attributeKey) {
+            HashMap<String, String> newMap = new HashMap<>();
 
             for (Map.Entry<String, String> entry : map.entrySet()) {
                 String key = entry.getKey();
